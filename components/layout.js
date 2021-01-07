@@ -6,7 +6,7 @@ import Link from 'next/link'
 const name = 'Sammak'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+export default function Layout({children, home }) {
 return (
     <div className={styles.container}>
         <Head>
@@ -28,7 +28,7 @@ return (
           {home ? (
             <>
             <img 
-            src="/image/profile.jpg"
+            src="/images/profile.jpg"
             className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
             alt={name}
             />
@@ -57,7 +57,7 @@ return (
         {!home && (
             <div className={styles.backToHome}>
                 <Link href="/">
-                    <a>"back to home"</a>
+                    <a>Home</a>
                 </Link>
             </div>
         )}
