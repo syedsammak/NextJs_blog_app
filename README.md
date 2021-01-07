@@ -47,3 +47,7 @@ This Repository consists of a blog app developed using Next.js following the tut
 
     - Create a simple API endpoint using handler function which takes req and res as parameters in which req is for requesting a message to server and res as repsonse back recived from the server
     - Api routes not to be fetch by getStaticeProps or getStaticPaths directly as alternative we can add server side code directly in both functions to recive data
+
+# Deployed Project
+
+## URL: https://next-js-blog-app-fawn.vercel.app/
