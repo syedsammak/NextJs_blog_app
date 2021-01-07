@@ -37,7 +37,7 @@ This Repository consists of a blog app developed using Next.js following the tut
 
 ### Server Side Rendering
 
-    - getServerSideProps method learend to get seerver side data one each request
+    - getServerSideProps method learned to get server side data one each request
 
 ### Client Side Rendering
 
