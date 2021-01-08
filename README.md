@@ -48,6 +48,19 @@ This Repository consists of a blog app developed using Next.js following the tut
     - Create a simple API endpoint using handler function which takes req and res as parameters in which req is for requesting a message to server and res as repsonse back recived from the server
     - Api routes not to be fetch by getStaticeProps or getStaticPaths directly as alternative we can add server side code directly in both functions to recive data
 
+### Client Side Rendering (posts Folder)
+
+    - we use two functions to recieve posts and there relative paths for each individual post
+    - we use axios to fetch data and await it response in our function provided by Next.js as getStaticProps and getStaticPaths
+    - The HTML Layout is generated and it dosent get refereshed when we use getStaticProps to populate data all the data is fetched on pre-render basis
+    -the props are assigned as in terms of objects and path values which are mapped on  to our HTML template
+    -as data gets updated the page dosent refreshes as the template has pre rendered data
+
+### Server Side Rendering (gallery Folder)
+
+    - axios is used to fetch data but with promise in return when the promise is fullfiled as in terms request is received the data get resolved and sent back to the original HTMl template as prop
+    - the HTML template recives URLs and id as key which is mapped onto the img tag in our HTML Template
+
 # Deployed Project
 
 ## URL: https://next-js-blog-app-fawn.vercel.app/
