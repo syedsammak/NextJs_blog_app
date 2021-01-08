@@ -40,6 +40,9 @@ export default function Home({ allPostsData , allUsersData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>I am a Software Engineer !</p>
+        <Link href={`/gallery/postImages`}>
+               <a>Gallery</a>
+        </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
