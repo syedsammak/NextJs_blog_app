@@ -44,6 +44,7 @@ export default function gallery({ photos }) {
                 src= {url.toString()}
                 width="100px"
                 height="100px"
+                key={id}
                 />
                 ))}
                 </div>

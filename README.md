@@ -60,6 +60,7 @@ This Repository consists of a blog app developed using Next.js following the tut
 
     - axios is used to fetch data but with promise in return when the promise is fullfiled as in terms request is received the data get resolved and sent back to the original HTMl template as prop
     - the HTML template recives URLs and id as key which is mapped onto the img tag in our HTML Template
+    - the differnece can be scene as each time the data is fetched the HTML resfreshes the whole template and post render the tag binds
 
 # Deployed Project
 
