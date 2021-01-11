@@ -4,14 +4,14 @@ import axios from 'axios'
 
 
 
-const API_Url = 'https://jsonplaceholder.typicode.com'
+const API_Url = 'https://picsum.photos/v2/list'
 
 
 
 export async function getServerSideProps(){
     try
     {
-        const photos = await axios.get(`${API_Url}/photos`);
+        const photos = await axios.get(`${API_Url}`);
         return { props: { photos : photos.data } }
         
     }
@@ -26,12 +26,12 @@ export async function getServerSideProps(){
 export default function gallery({ photos }) {
     return(
         <Layout home>
-            <div className="columns">
+            <div className="columns is-mobile">
                 <div className="column">
                 {
-                photos.map(({ id , url }) => (
+                photos.map(({ id , download_url }) => (
                 <img 
-                src= {url.toString()}
+                src= {download_url.toString()}
                 width="100px"
                 height="100px"
                 key={id}

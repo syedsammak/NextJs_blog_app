@@ -36,6 +36,7 @@ catch(e){
 
 export default function Home() {
   const [post, setpost] = useState([])
+  const [user, setuser] = useState([])
   const router = useRouter()
 
 
@@ -46,40 +47,74 @@ export default function Home() {
   
   }, [])
 
+  useEffect(() => {
+  axios
+  .get(`${API_Url}/users`)
+  .then(response => {setuser(response.data); console.log(response.data)})
+  
+  }, [])
+
+
+  const getUser = (id, users) => {
+    const username = users.find(user => user.id === id)
+    return username.name
+  }
+
   return (
-    <Layout home>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section >
+      <div className="columns is-mobile">
+  <div className="column is-half is-offset-one-quarter">
+  <img 
+            src="/images/profile.jpg"
+            alt={"dsad"}
+            width="100px"
+            height="100px"
+            />
+  <section>
         <p>I am a Software Engineer !</p>
         <Link href={`/gallery/SSR/postImages`}>
                <a>Gallery</a>
         </Link>
       </section>
+
+  </div>
+</div>
+      
       <section >
-        <h2 >Blog</h2>
         <ul >
-          {post.map(({ id, title }) => {
-
-
-let pid = id;
-           return (
-              <li  key={pid}>
+          {post.map(({ id, userId, title }) => (
+        <div className="column is-mobile" key={id}>
+           <div className="column is-11 is-offset-1" key={id}>
+              <div className="tile is-ancestor" key={id}>
+                <div className="tile is-parent is-8" key={id}>
+      <article className="tile is-child box">
+      <p className="title is-4">{getUser(userId , user)}</p>
+      
+                <li  key={id}>
                 <span onClick={() => router.push({
                   pathname: `/posts/CSR/${id}`,
-                  query: { pid: pid },
-                })}><a>{title}</a></span>
+                  query: { pid: id },
+                })}><a className="subtitle is-6">{title}</a>
+                </span>
                 {/* <Link href={`/posts/${id}`}></Link> */}
-               <br />
+               
                {/* <small className={utilStyles.lightText}>
                  <Date dateString={date} />
                </small> */}
               </li>
+    </article>
+  </div>
+  </div>
+              </div>
+            </div>
+            
             )
-          })}
+          )}
         </ul>
       </section>
-    </Layout>
+      </>
   )
 }

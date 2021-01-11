@@ -1,4 +1,4 @@
-import "bulma/sass/utilities/_all.sass"
+import "../scss/styles.scss"
 
 
 export default function App({ Component, pageProps }) {
