@@ -51,21 +51,21 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section >
         <p>I am a Software Engineer !</p>
-        <Link href={`/gallery/postImages`}>
+        <Link href={`/gallery/SSR/postImages`}>
                <a>Gallery</a>
         </Link>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+      <section >
+        <h2 >Blog</h2>
+        <ul >
           {post.map(({ id, title }) => {
 
 
 let pid = id;
            return (
-              <li className={utilStyles.listItem} key={pid}>
+              <li  key={pid}>
                 <span onClick={() => router.push({
                   pathname: `/posts/CSR/${id}`,
                   query: { pid: pid },

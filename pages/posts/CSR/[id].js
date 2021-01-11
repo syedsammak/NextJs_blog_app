@@ -61,11 +61,12 @@ export default function Post(props) {
         {postData.title}
         </Head>
         <article>
-            <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-            <div className={utilStyles.lightText}>
+            <h1 className={"title"}>{postData.title}</h1>
+            <div>
                 {/* <Date dateString={postData.date} /> */}
                 <p>{postData.body}</p>
             </div>
+            <button >HEY!</button>
             {/* <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} /> */}
         </article>
     </Layout>
