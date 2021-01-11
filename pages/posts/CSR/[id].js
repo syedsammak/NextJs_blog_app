@@ -1,13 +1,11 @@
-import Layout from '../../components/layout'
+import Layout from '../../../components/layout'
 //import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 //import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
+import utilStyles from '../../../styles/utils.module.css'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-
-
-
+import { useRouter } from 'next/router'
 const API_Url = 'https://jsonplaceholder.typicode.com'
 
 /* export async function getStaticProps({ params }) {
@@ -19,9 +17,9 @@ const API_Url = 'https://jsonplaceholder.typicode.com'
             postData
         }
     }
-} */
+}
 
-/* 
+
 export async function getStaticPaths() {
     try
     { 
@@ -40,39 +38,33 @@ export async function getStaticPaths() {
     {
         console.error(e);
     }
-} */
+} 
+ */
 
+export default function Post(props) {
 
-export default function Post({ pathname }) {
-
-    console.log(pathname ,"uydtrsetifd5dfy")
+    const router = useRouter()
+    const { pid } = router.query 
+    console.log(pid)
 
     const [postData, setpostData] = useState([])
-    const [paths, setpaths] = useState([])
 
     useEffect(() => {
         axios
-        .get(`${API_Url}/posts/${props.id}`)
+        .get(`${API_Url}/posts/${pid}`)
         .then(response => setpostData(response.data))
     }, [])
-
-    useEffect(() => {
-        axios
-        .get(`${API_Url}/posts`)
-        .then(response => setpaths(response.data))
-     }, [])
-
-
 
     return (
     <Layout>
         <Head>
+        {postData.title}
         </Head>
         <article>
-            <h1 className={utilStyles.headingXl}></h1>
+            <h1 className={utilStyles.headingXl}>{postData.title}</h1>
             <div className={utilStyles.lightText}>
                 {/* <Date dateString={postData.date} /> */}
-                <p></p>
+                <p>{postData.body}</p>
             </div>
             {/* <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} /> */}
         </article>

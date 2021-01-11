@@ -62,13 +62,12 @@ export default function Home() {
         <ul className={utilStyles.list}>
           {post.map(({ id, title }) => {
 
-console.log(title , "oivcsfs")
 
 let pid = id;
            return (
               <li className={utilStyles.listItem} key={pid}>
                 <span onClick={() => router.push({
-                  pathname: `/posts/${pid}`,
+                  pathname: `/posts/CSR/${id}`,
                   query: { pid: pid },
                 })}><a>{title}</a></span>
                 {/* <Link href={`/posts/${id}`}></Link> */}
