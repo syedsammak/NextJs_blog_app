@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bulma": "^0.9.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
@@ -19,6 +20,7 @@
     "react-dom": "16.13.1",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
+    "sass": "^1.32.2",
     "tailwindcss": "^2.0.2"
   }
 }

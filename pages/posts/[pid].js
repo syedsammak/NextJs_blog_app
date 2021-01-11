@@ -5,7 +5,9 @@ import Head from 'next/head'
 import utilStyles from '../../styles/utils.module.css'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+
+
+
 const API_Url = 'https://jsonplaceholder.typicode.com'
 
 /* export async function getStaticProps({ params }) {
@@ -17,9 +19,9 @@ const API_Url = 'https://jsonplaceholder.typicode.com'
             postData
         }
     }
-}
+} */
 
-
+/* 
 export async function getStaticPaths() {
     try
     { 
@@ -38,33 +40,39 @@ export async function getStaticPaths() {
     {
         console.error(e);
     }
-} 
- */
+} */
 
-export default function Post(props) {
 
-    const router = useRouter()
-    const { pid } = router.query 
-    console.log(pid)
+export default function Post({ pathname }) {
+
+    console.log(pathname ,"uydtrsetifd5dfy")
 
     const [postData, setpostData] = useState([])
+    const [paths, setpaths] = useState([])
 
     useEffect(() => {
         axios
-        .get(`${API_Url}/posts/${pid}`)
+        .get(`${API_Url}/posts/${props.id}`)
         .then(response => setpostData(response.data))
     }, [])
+
+    useEffect(() => {
+        axios
+        .get(`${API_Url}/posts`)
+        .then(response => setpaths(response.data))
+     }, [])
+
+
 
     return (
     <Layout>
         <Head>
-        {postData.title}
         </Head>
         <article>
-            <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+            <h1 className={utilStyles.headingXl}></h1>
             <div className={utilStyles.lightText}>
                 {/* <Date dateString={postData.date} /> */}
-                <p>{postData.body}</p>
+                <p></p>
             </div>
             {/* <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} /> */}
         </article>

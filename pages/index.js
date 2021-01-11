@@ -5,12 +5,15 @@ import utilStyles from '../styles/utils.module.css'
 //import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
 import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+
 
 const API_Url = 'https://jsonplaceholder.typicode.com'
 
 
-
-export async function getStaticProps() {
+/* export async function getStaticProps() {
  try{ 
   const res = await axios.get(`${API_Url}/posts`)
   const allPostsData = await res.data
@@ -24,14 +27,24 @@ export async function getStaticProps() {
 catch(e){
   console.error(e);
 }
-}
+} */
 
   
   // const allPostsData = getSortedPostsData()
 
 
 
-export default function Home({ allPostsData , allUsersData }) {
+export default function Home() {
+  const [post, setpost] = useState([])
+  const router = useRouter()
+
+
+  useEffect(() => {
+  axios
+  .get(`${API_Url}/posts`)
+  .then(response => {setpost(response.data); console.log(response.data)})
+  
+  }, [])
 
   return (
     <Layout home>
@@ -47,17 +60,25 @@ export default function Home({ allPostsData , allUsersData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-             <Link href={`/posts/${id}`}>
-               <a>{title}</a>
-             </Link>
-             <br />
-             {/* <small className={utilStyles.lightText}>
-               <Date dateString={date} />
-             </small> */}
-            </li>
-          ))}
+          {post.map(({ id, title }) => {
+
+console.log(title , "oivcsfs")
+
+let pid = id;
+           return (
+              <li className={utilStyles.listItem} key={pid}>
+                <span onClick={() => router.push({
+                  pathname: `/posts/${pid}`,
+                  query: { pid: pid },
+                })}><a>{title}</a></span>
+                {/* <Link href={`/posts/${id}`}></Link> */}
+               <br />
+               {/* <small className={utilStyles.lightText}>
+                 <Date dateString={date} />
+               </small> */}
+              </li>
+            )
+          })}
         </ul>
       </section>
     </Layout>

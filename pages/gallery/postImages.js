@@ -1,7 +1,6 @@
 import Layout from '../../components/layout'
 import Head from 'next/head'
 import axios from 'axios'
-import utils from '../../styles/utils.module.css'
 
 
 
@@ -12,17 +11,8 @@ const API_Url = 'https://jsonplaceholder.typicode.com'
 export async function getServerSideProps(){
     try
     {
-        const photos = await new Promise((resolve, reject) =>
-        {
-            axios.get(`${API_Url}/photos`)
-            .then(res => 
-                {
-                    resolve(res.data)
-                })
-            
-        })
-
-        return { props: { photos } }
+        const photos = await axios.get(`${API_Url}/photos`);
+        return { props: { photos : photos.data } }
         
     }
     catch(e)
@@ -36,8 +26,8 @@ export async function getServerSideProps(){
 export default function gallery({ photos }) {
     return(
         <Layout home>
-            <div className={`${utils.row}`}>
-                <div className={`${utils.column}`}>
+            <div className="columns">
+                <div className="column">
                 {
                 photos.map(({ id , url }) => (
                 <img 
