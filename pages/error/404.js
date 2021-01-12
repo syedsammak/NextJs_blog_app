@@ -3,7 +3,7 @@ export default function errorPage() {
 
     return(
         <>
-<section class="hero is-danger">
+<section class="hero is-danger is-medium is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">

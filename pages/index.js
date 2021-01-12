@@ -47,7 +47,7 @@ export default function Home() {
   .get(`${API_Url}/posts`)
   .then(setloading(true),setError({}))
   .then(response => {setpost(response.data);  console.log(response.data)})
-  .catch(err => {setError(true);console.log(err)})
+  .catch(err => {setError(true);console.error(err)})
   }, [])
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Home() {
   .then(setloading(true),setError({}))
   .then(response => {setuser(response.data); setError(false) ;  console.log(response.data)})
   .then(setloading(false))
-  .catch(err => {setError(true); console.log(err)})
+  .catch(err => {setError(true); console.error(err)})
   }, [])
 
 
@@ -66,25 +66,18 @@ export default function Home() {
   }
 
   return (
+   
     <>
-      <Head>
+     <Layout>
+     <Head>
         <title>{siteTitle}</title>
       </Head>
+      </Layout>
+      
       
       <div className="columns is-mobile">
   <div className="column is-half is-offset-one-quarter">
-  <img 
-            src="/images/profile.jpg"
-            alt={"dsad"}
-            width="100px"
-            height="100px"
-            />
-  <section>
-        <p>I am a Software Engineer !</p>
-        <Link href={`/gallery/SSR/postImages`}>
-               <a>Gallery</a>
-        </Link>
-  </section>
+  
 
   </div>
 </div>
@@ -142,8 +135,8 @@ error ? (
     <div className="column is-mobile" key={id}>
        <div className="column is-10 is-offset-3" key={id}>
           <div className="tile is-ancestor" key={id}>
-            <div className="tile is-parent is-8" key={id}>
-    <article className="tile is-child box">
+            <div className="tile is-parent is-8  " key={id}>
+    <article className="tile is-child box ">
     <div className="card-content">
       <div className="media">
         <figure className="media-left">

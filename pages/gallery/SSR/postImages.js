@@ -32,7 +32,8 @@ export async function getServerSideProps(){
 
 export default function gallery({ photos , loading }) {
     return(
-        <Layout home>
+            <>
+             <Layout></Layout>
             {loading ?  (
                 <>
 
@@ -70,8 +71,7 @@ export default function gallery({ photos , loading }) {
                 
             </div>
             )}
-           
-        </Layout>
+           </>
 
     )
 }
