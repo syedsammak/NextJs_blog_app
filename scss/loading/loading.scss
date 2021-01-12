@@ -1,0 +1,29 @@
+
+
+
+.loader-wrapper {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background: rgb(255, 255, 255);
+    opacity: 1;
+    z-index: -1;
+    transition:opacity .3s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-radius: 4pc;
+
+    .loader {
+        height:50px;
+        width:50px;
+    }
+
+    &.is-active {
+        opacity: 1;
+        z-index: 1;
+    }
+
+}

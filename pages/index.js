@@ -37,14 +37,16 @@ catch(e){
 export default function Home() {
   const [post, setpost] = useState([])
   const [user, setuser] = useState([])
+  const [loading, setloading] = useState(false)
   const router = useRouter()
 
 
   useEffect(() => {
   axios
   .get(`${API_Url}/posts`)
-  .then(response => {setpost(response.data); console.log(response.data)})
-  
+  .then(setloading(true))
+  .then(response => {setpost(response.data); setloading(false); console.log(response.data)})
+
   }, [])
 
   useEffect(() => {
@@ -83,56 +85,87 @@ export default function Home() {
 
   </div>
 </div>
+
+{loading ? (
+  <>
+
+
+  <div className="section">
+    <div className="container">
       
-      <section >
-        <ul >
-          {post.map(({ id, userId, title }) => (
-        <div className="column is-mobile" key={id}>
-           <div className="column is-10 is-offset-3" key={id}>
-              <div className="tile is-ancestor" key={id}>
-                <div className="tile is-parent is-8" key={id}>
-      <article className="tile is-child box">
-        <div className="card-content">
-          <div className="media">
-            <figure className="media-left">
-            <p className="image is-64x64">
-          <img 
-          className="is-rounded"
-          src="https://bulma.io/images/placeholders/96x96.png"
-          alt="Placeholder image" />
-        </p>
-            </figure>
-            <div className="media-content">
-              <div className="content">
-              <p><strong>{getUser(userId , user)}</strong></p>
-              <li  key={id}>
-                <span onClick={() => router.push({
-                  pathname: `/posts/CSR/${id}`,
-                  query: { pid: id },
-                })}><a className="subtitle is-5">{title}</a>
-                </span>
-                {/* <Link href={`/posts/${id}`}></Link> */}
-               
-               {/* <small className={utilStyles.lightText}>
-                 <Date dateString={date} />
-               </small> */}
-              </li>
+            <div className="loader-wrapper is-offset-5">
+            <div className="columns">
+        <div className="column is-8 is-offset-1">
+            <h1 className="title">Loading</h1>
+            </div>
+            <div className="column ">
+              <div className="loader is-loading"></div>
               </div>
             </div>
-          </div>
-        </div>
+            </div>
+      </div>
+    </div>
+
+
+  </>
+
+) : (
+
+<section>
+<ul >
+  {post.map(({ id, userId, title }) => (
+<div className="column is-mobile" key={id}>
+   <div className="column is-10 is-offset-3" key={id}>
+      <div className="tile is-ancestor" key={id}>
+        <div className="tile is-parent is-8" key={id}>
+<article className="tile is-child box">
+<div className="card-content">
+  <div className="media">
+    <figure className="media-left">
+    <p className="image is-64x64">
+  <img 
+  className="is-rounded"
+  src="https://bulma.io/images/placeholders/96x96.png"
+  alt="Placeholder image" />
+</p>
+    </figure>
+    <div className="media-content">
+      <div className="content">
+      <p><strong>{getUser(userId , user)}</strong></p>
+      <li  key={id}>
+        <span onClick={() => router.push({
+          pathname: `/posts/CSR/${id}`,
+          query: { pid: id },
+        })}><a className="subtitle is-5">{title}</a>
+        </span>
+        {/* <Link href={`/posts/${id}`}></Link> */}
        
-                
-    </article>
+       {/* <small className={utilStyles.lightText}>
+         <Date dateString={date} />
+       </small> */}
+      </li>
+      </div>
+    </div>
   </div>
-  </div>
-              </div>
-            </div>
-            
-            )
-          )}
-        </ul>
-      </section>
+</div>
+
+        
+</article>
+</div>
+</div>
+      </div>
+    </div>
+    
+    )
+  )}
+</ul>
+</section>
+
+
+
+)}
+      
+     
       </>
   )
 }
