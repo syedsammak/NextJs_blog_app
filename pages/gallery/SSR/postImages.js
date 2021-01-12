@@ -1,7 +1,6 @@
 import Layout from '../../../components/layout'
 import Head from 'next/head'
 import axios from 'axios'
-import dynamic from 'next/dynamic'
 
 
 const API_Url = 'https://picsum.photos/v2/list'

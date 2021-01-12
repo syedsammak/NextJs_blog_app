@@ -7,6 +7,7 @@ import Date from '../components/date'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Error from 'next/error'
 
 
 
@@ -38,22 +39,25 @@ export default function Home() {
   const [post, setpost] = useState([])
   const [user, setuser] = useState([])
   const [loading, setloading] = useState(false)
+  const [error, setError] = useState(false)
   const router = useRouter()
 
 
   useEffect(() => {
   axios
   .get(`${API_Url}/posts`)
-  .then(setloading(true))
+  .then(setloading(true),setError({}))
   .then(response => {setpost(response.data);  console.log(response.data)})
-
+  .catch(err => {setError(true);console.log(err)})
   }, [])
 
   useEffect(() => {
   axios
   .get(`${API_Url}/users`)
-  .then(response => {setuser(response.data); setloading(false); console.log(response.data)})
-  
+  .then(setloading(true),setError({}))
+  .then(response => {setuser(response.data); setError(false) ;  console.log(response.data)})
+  .then(setloading(false))
+  .catch(err => {setError(true); console.log(err)})
   }, [])
 
 
@@ -81,12 +85,14 @@ export default function Home() {
         <Link href={`/gallery/SSR/postImages`}>
                <a>Gallery</a>
         </Link>
-      </section>
+  </section>
 
   </div>
 </div>
 
-{loading ? (
+{
+
+loading ? (
   <>
 
   <div className="section">
@@ -109,62 +115,79 @@ export default function Home() {
   </>
 
 ) : (
-
-<section>
-<ul >
-  {post.map(({ id, userId, title }) => (
-<div className="column is-mobile" key={id}>
-   <div className="column is-10 is-offset-3" key={id}>
-      <div className="tile is-ancestor" key={id}>
-        <div className="tile is-parent is-8" key={id}>
-<article className="tile is-child box">
-<div className="card-content">
-  <div className="media">
-    <figure className="media-left">
-    <p className="image is-64x64">
-  <img 
-  className="is-rounded"
-  src="https://bulma.io/images/placeholders/96x96.png"
-  alt="Placeholder image" />
-</p>
-    </figure>
-    <div className="media-content">
-      <div className="content">
-      <p><strong>{getUser(userId , user)}</strong></p>
-      <li  key={id}>
-        <span onClick={() => router.push({
-          pathname: `/posts/CSR/${id}`,
-          query: { pid: id },
-        })}><a className="subtitle is-5">{title}</a>
-        </span>
-        {/* <Link href={`/posts/${id}`}></Link> */}
-       
-       {/* <small className={utilStyles.lightText}>
-         <Date dateString={date} />
-       </small> */}
-      </li>
-      </div>
+  
+error ? (
+<>
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        404 Not found
+      </h1>
+      <h2 class="subtitle">
+        No Data !
+      </h2>
     </div>
   </div>
-</div>
+</section>
+</>
 
-        
-</article>
-</div>
-</div>
+) : (
+<>
+  <section>
+    <ul>
+      {post.map(({ id, userId, title }) => (
+    <div className="column is-mobile" key={id}>
+       <div className="column is-10 is-offset-3" key={id}>
+          <div className="tile is-ancestor" key={id}>
+            <div className="tile is-parent is-8" key={id}>
+    <article className="tile is-child box">
+    <div className="card-content">
+      <div className="media">
+        <figure className="media-left">
+        <p className="image is-64x64">
+      <img 
+      className="is-rounded"
+      src="https://bulma.io/images/placeholders/96x96.png"
+      alt="Placeholder image" />
+    </p>
+        </figure>
+        <div className="media-content">
+          <div className="content">
+          <p><strong>{getUser(userId , user)}</strong></p>
+          <li  key={id}>
+            <span onClick={() => router.push({
+              pathname: `/posts/CSR/${id}`,
+              query: { pid: id },
+            })}><a className="subtitle is-5">{title}</a>
+            </span>
+            {/* <Link href={`/posts/${id}`}></Link> */}
+           
+           {/* <small className={utilStyles.lightText}>
+             <Date dateString={date} />
+           </small> */}
+          </li>
+          </div>
+        </div>
       </div>
     </div>
     
-    )
-  )}
-</ul>
-</section>
+            
+    </article>
+    </div>
+    </div>
+          </div>
+        </div>
+        
+        )
+      )}
+    </ul>
+  </section>
+</>
 
 
-
-)}
-      
-     
-      </>
-  )
+  ) 
+)
 }
+</>
+)}
