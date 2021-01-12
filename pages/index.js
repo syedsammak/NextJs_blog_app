@@ -65,6 +65,7 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      
       <div className="columns is-mobile">
   <div className="column is-half is-offset-one-quarter">
   <img 
@@ -87,17 +88,28 @@ export default function Home() {
         <ul >
           {post.map(({ id, userId, title }) => (
         <div className="column is-mobile" key={id}>
-           <div className="column is-11 is-offset-1" key={id}>
+           <div className="column is-10 is-offset-3" key={id}>
               <div className="tile is-ancestor" key={id}>
                 <div className="tile is-parent is-8" key={id}>
       <article className="tile is-child box">
-      <p className="title is-4">{getUser(userId , user)}</p>
-      
-                <li  key={id}>
+        <div className="card-content">
+          <div className="media">
+            <figure className="media-left">
+            <p className="image is-64x64">
+          <img 
+          className="is-rounded"
+          src="https://bulma.io/images/placeholders/96x96.png"
+          alt="Placeholder image" />
+        </p>
+            </figure>
+            <div className="media-content">
+              <div className="content">
+              <p><strong>{getUser(userId , user)}</strong></p>
+              <li  key={id}>
                 <span onClick={() => router.push({
                   pathname: `/posts/CSR/${id}`,
                   query: { pid: id },
-                })}><a className="subtitle is-6">{title}</a>
+                })}><a className="subtitle is-5">{title}</a>
                 </span>
                 {/* <Link href={`/posts/${id}`}></Link> */}
                
@@ -105,6 +117,12 @@ export default function Home() {
                  <Date dateString={date} />
                </small> */}
               </li>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+                
     </article>
   </div>
   </div>
