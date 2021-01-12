@@ -8,7 +8,7 @@ export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({children, home }) {
 return (
-    <div >
+    <div>
         <Head>
             <link rel="icon" href="favicon.ico" />
             <meta 
@@ -25,65 +25,61 @@ return (
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header >
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+  <div className="navbar-brand">
+    <a className="navbar-item" href="https://bulma.io">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-      <Link href={`/`}>
-               <a>Home</a>
-        </Link>
+  <div id="navbarBasicExample" className="navbar-menu">
+    <div className="navbar-start">
+      <a href={"/"} className="navbar-item">
+
+               Home
+      </a>
+      <a href={`/gallery/SSR/postImages`} className="navbar-item">
+     
+               Gallery
+        
       </a>
 
-      <a class="navbar-item">
-      <section>
-        <Link href={`/gallery/SSR/postImages`}>
-               <a>Gallery</a>
-        </Link>
-  </section>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+      <div className="navbar-item has-dropdown is-hoverable">
+        <a className="navbar-link">
           More
         </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
+        <div className="navbar-dropdown">
+          <a className="navbar-item">
             About
           </a>
-          <a class="navbar-item">
+          <a className="navbar-item">
             Jobs
           </a>
-          <a class="navbar-item">
+          <a className="navbar-item">
             Contact
           </a>
-          <hr class="navbar-divider" />
-          <a class="navbar-item">
+          <hr className="navbar-divider" />
+          <a className="navbar-item">
             Report an issue
           </a>
         </div>
       </div>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
+    <div className="navbar-end">
+      <div className="navbar-item">
+        <div className="buttons">
+          <a className="button is-primary">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a className="button is-light">
             Log in
           </a>
         </div>

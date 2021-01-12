@@ -3,13 +3,13 @@ export default function errorPage() {
 
     return(
         <>
-<section class="hero is-danger is-medium is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
+<section className="hero is-danger is-medium is-bold">
+  <div className="hero-body">
+    <div className="container">
+      <h1 className="title">
         404 Not found
       </h1>
-      <h2 class="subtitle">
+      <h2 className="subtitle">
         No Data !
       </h2>
     </div>

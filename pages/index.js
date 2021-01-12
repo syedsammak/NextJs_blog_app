@@ -11,6 +11,8 @@ import Error from 'next/error'
 import ServerErrorPage from './error/404'
 
 const API_Url = 'https://jsonplaceholder.typicode.com'
+const BASE_URL = 'https://dummyapi.io/data/api'
+const APP_ID = '5ffda4f1fae51808b6926c05'
 
 
 /* export async function getStaticProps() {
@@ -37,6 +39,7 @@ catch(e){
 export default function Home() {
   const [post, setpost] = useState([])
   const [user, setuser] = useState([])
+  const [userImg, setuserImg] = useState([])
   const [loading, setloading] = useState(false)
   const [error, setError] = useState(false)
   const router = useRouter()
@@ -59,10 +62,19 @@ export default function Home() {
   .catch(err => {setError(true); console.error(err)})
   }, [])
 
+useEffect(() => {
+  axios.get(`${BASE_URL}/user?limit=10`, { headers:{ 'app-id': APP_ID }})
+  .then(response => { setuserImg(response.data), console.log(response.data) } )
+}, [])
 
   const getUser = (id, users) => {
     const username = users.find(user => user.id === id)
     return username.name
+  }
+
+  const getUserImg = (id) => {
+    const image = userImg.find(image => image.CharAt(0) == id)
+    return console.log(userImg)
   }
 
   return (
@@ -143,13 +155,14 @@ error ? (
         <p className="image is-64x64">
       <img 
       className="is-rounded"
-      src="https://bulma.io/images/placeholders/96x96.png"
+      src="https://bulma.io/images/placeholders/64x64.png"
       alt="Placeholder image" />
     </p>
         </figure>
         <div className="media-content">
           <div className="content">
           <p><strong>{getUser(userId , user)}</strong></p>
+
           <li  key={id}>
             <span onClick={() => router.push({
               pathname: `/posts/CSR/${id}`,
