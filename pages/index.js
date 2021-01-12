@@ -64,7 +64,7 @@ export default function Home() {
 
 useEffect(() => {
   axios.get(`${BASE_URL}/user?limit=10`, { headers:{ 'app-id': APP_ID }})
-  .then(response => { setuserImg(response.data), console.log(response.data) } )
+  .then(response => { setuserImg(response.data.data), console.log(response.data) } )
 }, [])
 
   const getUser = (id, users) => {
@@ -73,12 +73,12 @@ useEffect(() => {
   }
 
   const getUserImg = (id) => {
-    const image = userImg.find(image => image.CharAt(0) == id)
-    return console.log(userImg)
+    const image = userImg.find(image => image.id == id)
+    return console.log(image)
   }
 
   return (
-   
+  
     <>
      <Layout>
      <Head>
@@ -162,7 +162,7 @@ error ? (
         <div className="media-content">
           <div className="content">
           <p><strong>{getUser(userId , user)}</strong></p>
-
+          {getUserImg(id)}
           <li  key={id}>
             <span onClick={() => router.push({
               pathname: `/posts/CSR/${id}`,
