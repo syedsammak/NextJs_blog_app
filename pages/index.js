@@ -45,14 +45,14 @@ export default function Home() {
   axios
   .get(`${API_Url}/posts`)
   .then(setloading(true))
-  .then(response => {setpost(response.data); setloading(false); console.log(response.data)})
+  .then(response => {setpost(response.data);  console.log(response.data)})
 
   }, [])
 
   useEffect(() => {
   axios
   .get(`${API_Url}/users`)
-  .then(response => {setuser(response.data); console.log(response.data)})
+  .then(response => {setuser(response.data); setloading(false); console.log(response.data)})
   
   }, [])
 
@@ -88,7 +88,6 @@ export default function Home() {
 
 {loading ? (
   <>
-
 
   <div className="section">
     <div className="container">
