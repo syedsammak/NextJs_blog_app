@@ -8,8 +8,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Error from 'next/error'
-
-
+import ServerErrorPage from './error/404'
 
 const API_Url = 'https://jsonplaceholder.typicode.com'
 
@@ -117,7 +116,10 @@ loading ? (
 ) : (
   
 error ? (
-<>
+
+<ServerErrorPage />
+
+/* <>
 <section class="hero is-danger">
   <div class="hero-body">
     <div class="container">
@@ -130,7 +132,7 @@ error ? (
     </div>
   </div>
 </section>
-</>
+</> */
 
 ) : (
 <>
