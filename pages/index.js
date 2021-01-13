@@ -62,11 +62,22 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+  let mounted = true
   axios.get(`${BASE_URL}/user?limit=10`, { headers:{ 'app-id': APP_ID }})
   .then(setloading(true),setError({}))
   .then(response => { setuserImg(response.data.data) } )
-  .then(setloading(false))
+  .then(() => {
+    if(mounted)
+    {
+      setloading(false)
+    }
+  })
   .catch(err => {setError(true); console.error(err)})
+
+
+  return function cleanup() {
+    mounted = false
+  }
 }, [])
 
   const getUser = (id, users) => {
