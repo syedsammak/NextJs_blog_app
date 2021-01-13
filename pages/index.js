@@ -14,6 +14,8 @@ import Image from 'next/image'
 const API_Url = 'https://jsonplaceholder.typicode.com'
 const BASE_URL = 'https://dummyapi.io/data/api'
 const APP_ID = '5ffda4f1fae51808b6926c05'
+const Image_Url = 'https://picsum.photos/v2/list'
+
 
 
 /* export async function getStaticProps() {
@@ -74,9 +76,10 @@ export default function Home() {
 
   useEffect(() => {
   let mounted = true
-  axios.get(`${BASE_URL}/user?limit=10`, { headers:{ 'app-id': APP_ID }})
+  //axios.get(`${BASE_URL}`, { headers:{ 'app-id': APP_ID }})
+  axios.get(`${Image_Url}`)
   .then(setloading(true),setError({}))
-  .then(response => { setuserImg(response.data.data) } )
+  .then(response => { setuserImg(response.data) } )
   .then(() => {
     if(mounted)
     {
@@ -97,8 +100,10 @@ export default function Home() {
   }
 
   const getUserImg = (id ,userImage) => {
-    
-      return userImage[id % 10].picture
+
+    return userImage[id % 10].download_url
+
+   //   return userImage[id % 10].picture
     
     //return console.log(userImage.filter(img => img.id.charAt(0) == id))
   }
@@ -168,9 +173,9 @@ error ? (
   <section>
     <ul>
       {post.map(({ id, userId, title }) => (
-    <div className="container is-widescreen">
+    <div className="container is-widescreen" key={id}>
     <div className="column is-mobile" key={id}>
-    <article className="tile notification is-primary ">
+    <article className="tile notification is-primary  " key={id}>
       <div className="media">
         <figure className="media-left">
         <p className="image is-94x94">

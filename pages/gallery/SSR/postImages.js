@@ -39,7 +39,6 @@ export default function gallery({ photos , loading }) {
 
                 <div className="section">
                   <div className="container">
-                    
                           <div className="loader-wrapper is-offset-5">
                           <div className="columns">
                       <div className="column is-8 is-offset-1">
