@@ -58,13 +58,15 @@ export default function Home() {
   .get(`${API_Url}/users`)
   .then(setloading(true),setError({}))
   .then(response => {setuser(response.data); setError(false) ;  console.log(response.data)})
-  .then(setloading(false))
   .catch(err => {setError(true); console.error(err)})
   }, [])
 
-useEffect(() => {
+  useEffect(() => {
   axios.get(`${BASE_URL}/user?limit=10`, { headers:{ 'app-id': APP_ID }})
-  .then(response => { setuserImg(response.data.data), console.log(response.data) } )
+  .then(setloading(true),setError({}))
+  .then(response => { setuserImg(response.data.data) } )
+  .then(setloading(false))
+  .catch(err => {setError(true); console.error(err)})
 }, [])
 
   const getUser = (id, users) => {
@@ -72,9 +74,11 @@ useEffect(() => {
     return username.name
   }
 
-  const getUserImg = (id) => {
-    const image = userImg.find(image => image.id == id)
-    return console.log(image)
+  const getUserImg = (id ,userImage) => {
+    
+      return userImage[id % 10].picture
+    
+    //return console.log(userImage.filter(img => img.id.charAt(0) == id))
   }
 
   return (
@@ -89,8 +93,6 @@ useEffect(() => {
       
       <div className="columns is-mobile">
   <div className="column is-half is-offset-one-quarter">
-  
-
   </div>
 </div>
 
@@ -155,14 +157,14 @@ error ? (
         <p className="image is-64x64">
       <img 
       className="is-rounded"
-      src="https://bulma.io/images/placeholders/64x64.png"
+      src={getUserImg(id ,userImg)}
       alt="Placeholder image" />
     </p>
         </figure>
         <div className="media-content">
           <div className="content">
           <p><strong>{getUser(userId , user)}</strong></p>
-          {getUserImg(id)}
+          {console.log(getUserImg(id ,userImg))}
           <li  key={id}>
             <span onClick={() => router.push({
               pathname: `/posts/CSR/${id}`,

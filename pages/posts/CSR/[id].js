@@ -56,10 +56,12 @@ export default function Post(props) {
     }, [])
 
     return (
+        <>
     <Layout>
         <Head>
         {postData.title}
         </Head>
+    </Layout>
         <article>
             <h1 className={"title"}>{postData.title}</h1>
             <div>
@@ -69,6 +71,7 @@ export default function Post(props) {
             <button >HEY!</button>
             {/* <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} /> */}
         </article>
-    </Layout>
+        </>
+   
 )
 }
