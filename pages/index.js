@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Error from 'next/error'
 import ServerErrorPage from './error/404'
+import Image from 'next/image'
 
 const API_Url = 'https://jsonplaceholder.typicode.com'
 const BASE_URL = 'https://dummyapi.io/data/api'
@@ -169,15 +170,15 @@ error ? (
       {post.map(({ id, userId, title }) => (
     <div className="container is-widescreen">
     <div className="column is-mobile" key={id}>
-    <article className="tile  notification is-primary ">
-    <div className="card-content">
+    <article className="tile notification is-primary ">
       <div className="media">
         <figure className="media-left">
-        <p className="image is-64x64">
+        <p className="image is-94x94">
       <img 
-      className="is-rounded"
+      className=""
       src={getUserImg(id ,userImg)}
-      alt="Placeholder image" />
+      alt="Placeholder image" 
+      />
     </p>
         </figure>
         <div className="media-content">
@@ -199,7 +200,6 @@ error ? (
           </div>
         </div>
       </div>
-    </div>
     
             
     </article>
