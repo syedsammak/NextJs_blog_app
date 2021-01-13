@@ -2,7 +2,7 @@ import Head from 'next/head'
 /* import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css' */
 import Link from 'next/link'
-
+import Image from 'next/image'
 const name = 'Sammak'
 export const siteTitle = 'Next.js Sample Website'
 
@@ -28,9 +28,13 @@ return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
     </a>
-
+    <Image 
+    src="/images/notes.png"
+    alt="LOGO"
+    width={50}
+    height={10}
+    />
     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>

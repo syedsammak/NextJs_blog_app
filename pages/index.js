@@ -43,7 +43,7 @@ export default function Home() {
   const [loading, setloading] = useState(false)
   const [error, setError] = useState(false)
   const router = useRouter()
-
+  const source = axios.CancelToken.source()
 
   useEffect(() => {
   axios
@@ -55,10 +55,20 @@ export default function Home() {
 
   useEffect(() => {
   axios
-  .get(`${API_Url}/users`)
+  .get(`${API_Url}/users`, { cancelToken: source.token, })
   .then(setloading(true),setError({}))
   .then(response => {setuser(response.data); setError(false) ;  console.log(response.data)})
-  .catch(err => {setError(true); console.error(err)})
+  .catch(err => {
+    setError(true); 
+    console.error(err)
+    if(axios.isCancel(err))
+    {
+
+    }
+    else{
+      throw err;
+    }
+  })
   }, [])
 
   useEffect(() => {
