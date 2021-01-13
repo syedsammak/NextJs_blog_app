@@ -25,12 +25,12 @@ return (
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header >
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar p-4" role="navigation" aria-label="main navigation" >
   <div className="navbar-brand">
     <a className="navbar-item" href="https://bulma.io">
     </a>
     <Image 
-    src="/images/notes.png"
+    src="/images/blogging.svg"
     alt="LOGO"
     width={50}
     height={10}

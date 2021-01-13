@@ -66,7 +66,7 @@ export default function Home() {
 
     }
     else{
-      throw err;
+      throw err
     }
   })
   }, [])
@@ -169,9 +169,9 @@ error ? (
       {post.map(({ id, userId, title }) => (
     <div className="column is-mobile" key={id}>
        <div className="column is-10 is-offset-3" key={id}>
-          <div className="tile is-ancestor" key={id}>
+          <div className="tile is-ancestor"  key={id}>
             <div className="tile is-parent is-8  " key={id}>
-    <article className="tile is-child box ">
+    <article className="tile is-child box notification is-primary ">
     <div className="card-content">
       <div className="media">
         <figure className="media-left">
