@@ -1,0 +1,9 @@
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/grid/columns.sass";
+
+
+.column {
+    article {
+        border-radius: 25px;
+    }
+}

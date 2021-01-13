@@ -43,15 +43,12 @@ return (
   </div>
 
   <div id="navbarBasicExample" className="navbar-menu">
-    <div className="navbar-start">
+    <div className="navbar-start px-5">
       <a href={"/"} className="navbar-item">
-
                Home
       </a>
       <a href={`/gallery/SSR/postImages`} className="navbar-item">
-     
                Gallery
-        
       </a>
 
       <div className="navbar-item has-dropdown is-hoverable">

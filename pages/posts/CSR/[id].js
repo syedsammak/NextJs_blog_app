@@ -62,15 +62,14 @@ export default function Post(props) {
         {postData.title}
         </Head>
     </Layout>
-        <article>
-            <h1 className={"title"}>{postData.title}</h1>
-            <div>
-                {/* <Date dateString={postData.date} /> */}
-                <p>{postData.body}</p>
+    <section className="hero is-fullheight is-primary is-bold">
+        <div className="hero-body">
+            <div className="container">
+            <h1 className={"title content is-large is-size-1 "}>{postData.title}</h1>
+            <p className={"content is-large "}>{postData.body}</p>
             </div>
-            <button >HEY!</button>
-            {/* <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} /> */}
-        </article>
+        </div>
+    </section>
         </>
    
 )
