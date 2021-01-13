@@ -175,20 +175,19 @@ error ? (
       {post.map(({ id, userId, title }) => (
     <div className="container is-widescreen" key={id}>
     <div className="column is-mobile" key={id}>
-    <article className="tile notification is-primary  " key={id}>
+    <article className="tile notification" key={id}>
       <div className="media">
         <figure className="media-left">
         <p className="image is-94x94">
       <img 
-      className=""
       src={getUserImg(id ,userImg)}
       alt="Placeholder image" 
       />
     </p>
         </figure>
         <div className="media-content">
-          <div className="content">
-          <p><strong>{getUser(userId , user)}</strong></p>
+          <div className="content p-5 ">
+          <p><h2>{getUser(userId , user)}</h2></p>
           {console.log(getUserImg(id ,userImg))}
           <li  key={id}>
             <span onClick={() => router.push({
