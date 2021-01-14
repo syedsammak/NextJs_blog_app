@@ -174,7 +174,7 @@ error ? (
     <ul>
       {post.map(({ id, userId, title }) => (
     <div className="container is-widescreen" key={id}>
-    <div className="column is-mobile" key={id}>
+    <div className="column is-mobile is-hovered" key={id}>
     <article className="tile notification" key={id}>
       <div className="media">
         <figure className="media-left">
