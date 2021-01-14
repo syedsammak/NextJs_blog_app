@@ -4,9 +4,13 @@ import utilStyles from '../styles/utils.module.css' */
 import Link from 'next/link'
 import Image from 'next/image'
 const name = 'Sammak'
+import React , { useState, useEffect } from 'react'
+import useDarkMode from 'use-dark-mode'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({children, home }) {
+export default function Layout() {
+    const darkMode = useDarkMode(true)
+
 return (
     <div>
         <Head>
@@ -83,8 +87,11 @@ return (
           <a className="button is-light">
             Log in
           </a>
-        </div>
+          <button className="button is-dark" onClick={darkMode.enable}>Dark</button>
+          <button className="button is-light" onClick={darkMode.disable}>Light</button>
+        </div> 
       </div>
+      
     </div>
   </div>
 </nav>

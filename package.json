@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bulma-extensions": "^6.2.7",
+    "bulma-switch": "^2.0.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
@@ -20,7 +22,9 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "sass": "^1.32.2",
-    "tailwindcss": "^2.0.2"
+    "styled-components": "^5.2.1",
+    "tailwindcss": "^2.0.2",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "bulma": "^0.9.1",

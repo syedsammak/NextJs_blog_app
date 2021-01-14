@@ -187,7 +187,7 @@ error ? (
         </figure>
         <div className="media-content">
           <div className="content p-5 ">
-          <p><h2>{getUser(userId , user)}</h2></p>
+          <h2 className="is-family-sans-serif">{getUser(userId , user)}</h2>
           {console.log(getUserImg(id ,userImg))}
           <li  key={id}>
             <span onClick={() => router.push({

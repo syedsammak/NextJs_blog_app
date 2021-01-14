@@ -1,9 +1,6 @@
 @import 'bulma/bulma';
-
 @import '../scss//loading//loading.scss';
 @import '../scss//newsfeed/feedblock.scss';
-
-
 
 
 html,
@@ -12,3 +9,26 @@ body {
     margin: 0;
     background-color: #F4F4F4;
 }
+
+body.light-mode {
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease;
+    .column {
+      article {
+        background-color: whitesmoke;
+      }
+    }
+  }
+body.dark-mode {
+    background-color: #1a1919;
+    color:whitesmoke;
+    .column {
+      article {
+        background-color: purple;
+      }
+      h2 {
+        color: white;
+      }
+    }
+  }
