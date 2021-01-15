@@ -3,7 +3,6 @@ import Head from 'next/head'
 import utilStyles from '../styles/utils.module.css' */
 import Link from 'next/link'
 import Image from 'next/image'
-const name = 'Sammak'
 import React , { useState, useEffect ,useContext } from 'react'
 import { ThemeContext }  from "../context/themeContext"
 import useDarkMode from '../lib/darkModeTheme'
@@ -12,7 +11,9 @@ export const siteTitle = 'Next.js Sample Website'
 export default function Layout() {
 
 
-  const { mode } = useContext(ThemeContext);
+  const theme = useContext( ThemeContext );
+
+  const { mode } = theme;
 
 return (
     <div className={mode ? 'dark-mode' : 'light-mode'}>

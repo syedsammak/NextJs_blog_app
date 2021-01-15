@@ -2,9 +2,9 @@ import React , { Children, Component, useEffect , createContext , useState, useC
 
  export const ThemeContext = createContext()
 
-const ThemeContextProvider = (props) => 
+export const ThemeContextProvider = (props) => 
 {
-    const [mode, setmode] = useState(true)
+    const [mode, setmode] = useState(false)
 
     useEffect(() => {
         setmode(window.localStorage.getItem("darkMode"))
