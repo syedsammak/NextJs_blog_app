@@ -1,9 +1,6 @@
 import Layout from "../components/layout"
 import "../scss/styles.scss"
 import ThemeContextProvider from "../context/newthemeContext"
-import React , { useState, useEffect ,useContext } from 'react'
-
-
 
 export default function App({ Component, pageProps }) {
    
@@ -21,7 +18,6 @@ export default function App({ Component, pageProps }) {
         </ThemeProvider>
     ) */
 
-
     return (
         <ThemeContextProvider>
         <Layout /> 
@@ -30,4 +26,9 @@ export default function App({ Component, pageProps }) {
     )
   
   
+}
+
+App.getInitialProps = async ({ctx}) =>{
+    console.log(ctx.req)
+    return {}
 }

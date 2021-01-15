@@ -14,9 +14,8 @@ export default function Layout() {
 
   console.log(theme , "Layout Value")
 
-
 return (
-    <div className={theme ? 'dark-mode' : 'light-mode'}>
+    <div className={theme.dark_mode ? 'dark-mode' : 'light-mode'}>
        
       <header >
       <nav className="navbar p-4" role="navigation" aria-label="main navigation" >
@@ -77,7 +76,7 @@ return (
           <a className="button is-light">
             Log in
           </a>
-          <button className={"button " + (theme ? "is-light" : "is-dark")} onClick={() => toggleTheme()} >{ theme ? "Light" : "Dark"}</button>
+          <button className={"button " + (theme.dark_mode ? "is-light" : "is-dark")} onClick={() => toggleTheme()} >{ theme.dark_mode ? "Light" : "Dark"}</button>
         </div> 
       </div>
     </div>

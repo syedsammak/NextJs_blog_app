@@ -164,7 +164,8 @@ error ? (
 
 ) : (
 <>
-  <section className={theme ? "dark-mode" : "light-mode"}>
+  <section className={theme.dark_mode
+     ? "dark-mode" : "light-mode"}>
     <ul>
       {post.map(({ id, userId, title }) => (
     <div className="container is-widescreen" key={id}>

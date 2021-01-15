@@ -1,44 +1,50 @@
-import { createContext , useContext , useState } from 'react'
-
+import { createContext , useContext , useState ,useEffect } from 'react'
 /*
 Create Context object instantiates a new context object which will
 be used to read current context value form its closest matching provider
 */
-
-
 const ThemeContext = createContext()
-
 /*
 in order to avoid calling useContext in every component we instantiate it 
 in our context file
 */
 
-
-
 export const useThemeContext = () => useContext(ThemeContext)
-
 
 /*
 A provider function holds all the logical reactive state , 
 functions to manage operations handled by the context High order component
 */
+const themeKey = "ThemeData"
 
 export const ThemeContextProvider = (props) => {
-    const [theme, settheme] = useState(true)
+    const defualtTheme = 
+    { 
+        dark_mode : false  
+    }
+   
+    const [theme, settheme] = useState(defualtTheme)
 
-    const toggleTheme = () => {
-        const find = JSON.parse(window.localStorage.getItem("darkMode"))
+    useEffect(() => {
+        const find = JSON.parse(window.localStorage.getItem(themeKey))
 
         if(find) 
         {
-            window.localStorage.setItem('darkMode' , false)
-            settheme(JSON.parse(window.localStorage.getItem('darkMode')))
+            settheme(find)
         }
         else
         {
-            window.localStorage.setItem('darkMode', true)
-            settheme(JSON.parse(window.localStorage.getItem('darkMode')))
+            window.localStorage.setItem(themeKey , JSON.stringify(defualtTheme))
         }
+    }, [])
+
+    useEffect(() => {
+        window.localStorage.setItem(themeKey , JSON.stringify(theme))
+        
+    }, [theme])
+
+    const toggleTheme = () => {
+     settheme({dark_mode : !theme.dark_mode})
     }
 
     const { children } = props
