@@ -4,19 +4,19 @@ import utilStyles from '../styles/utils.module.css' */
 import Link from 'next/link'
 import Image from 'next/image'
 import React , { useState, useEffect ,useContext } from 'react'
-import { ThemeContext }  from "../context/themeContext"
+import { useThemeContext }  from "../context/newthemeContext"
 import useDarkMode from '../lib/darkModeTheme'
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout() {
 
+  const { theme , toggleTheme } = useThemeContext();
 
-  const theme = useContext( ThemeContext );
+  console.log(theme , "Layout Value")
 
-  const { mode } = theme;
 
 return (
-    <div className={mode ? 'dark-mode' : 'light-mode'}>
+    <div className={theme ? 'dark-mode' : 'light-mode'}>
        
       <header >
       <nav className="navbar p-4" role="navigation" aria-label="main navigation" >
@@ -77,12 +77,9 @@ return (
           <a className="button is-light">
             Log in
           </a>
-          <button className="button is-dark" onClick={() => window.localStorage.setItem("darkMode",true)} >Dark</button>
-          <button className="button is-light" onClick={() => window.localStorage.setItem("darkMode",false)}>Light</button>
-       
+          <button className={"button " + (theme ? "is-light" : "is-dark")} onClick={() => toggleTheme()} >{ theme ? "Light" : "Dark"}</button>
         </div> 
       </div>
-      
     </div>
   </div>
 </nav>

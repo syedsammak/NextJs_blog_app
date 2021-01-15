@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-//import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
@@ -10,7 +8,7 @@ import { useRouter } from 'next/router'
 import Error from 'next/error'
 import ServerErrorPage from './error/404'
 import Image from 'next/image'
-import {ThemeContext} from "../context/themeContext"
+import { useThemeContext } from "../context/newthemeContext"
 const API_Url = 'https://jsonplaceholder.typicode.com'
 const BASE_URL = 'https://dummyapi.io/data/api'
 const APP_ID = '5ffda4f1fae51808b6926c05'
@@ -40,7 +38,6 @@ catch(e){
 
 
 export default function Home() {
-  const [darkMode, setdarkMode] = useState(false);
   const [post, setpost] = useState([])
   const [user, setuser] = useState([])
   const [userImg, setuserImg] = useState([])
@@ -94,6 +91,8 @@ export default function Home() {
     mounted = false
   }
 }, [])
+
+ const { theme } = useThemeContext()
 
 
   const getUser = (id, users) => {
@@ -165,7 +164,7 @@ error ? (
 
 ) : (
 <>
-  <section>
+  <section className={theme ? "dark-mode" : "light-mode"}>
     <ul>
       {post.map(({ id, userId, title }) => (
     <div className="container is-widescreen" key={id}>

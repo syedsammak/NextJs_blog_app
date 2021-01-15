@@ -1,6 +1,6 @@
 import Layout from "../components/layout"
 import "../scss/styles.scss"
-import ThemeContextProvider  from "../context/themeContext"
+import ThemeContextProvider from "../context/newthemeContext"
 import React , { useState, useEffect ,useContext } from 'react'
 
 
