@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import Error from 'next/error'
 import ServerErrorPage from './error/404'
 import Image from 'next/image'
-
+import {ThemeContext} from "../context/themeContext"
 const API_Url = 'https://jsonplaceholder.typicode.com'
 const BASE_URL = 'https://dummyapi.io/data/api'
 const APP_ID = '5ffda4f1fae51808b6926c05'
@@ -40,6 +40,7 @@ catch(e){
 
 
 export default function Home() {
+  const [darkMode, setdarkMode] = useState(false);
   const [post, setpost] = useState([])
   const [user, setuser] = useState([])
   const [userImg, setuserImg] = useState([])
@@ -94,6 +95,7 @@ export default function Home() {
   }
 }, [])
 
+
   const getUser = (id, users) => {
     const username = users.find(user => user.id === id)
     return username.name
@@ -111,17 +113,10 @@ export default function Home() {
   return (
   
     <>
-     <Layout>
      <Head>
         <title>{siteTitle}</title>
       </Head>
-      </Layout>
-      
-      
-      <div className="columns is-mobile">
-  <div className="column is-half is-offset-one-quarter">
-  </div>
-</div>
+ 
 
 {
 
@@ -222,5 +217,6 @@ error ? (
   ) 
 )
 }
+
 </>
 )}

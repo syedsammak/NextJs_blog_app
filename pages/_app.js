@@ -1,11 +1,12 @@
+import Layout from "../components/layout"
 import "../scss/styles.scss"
-/* import React , { useState, useEffect } from 'react'
-import useDarkMode from 'use-dark-mode'
-import { ThemeProvider } from 'styled-components'
-import { lightTheme,darkTheme } from '../components/theme' */
+import ThemeContextProvider  from "../context/themeContext"
+import React , { useState, useEffect ,useContext } from 'react'
+
 
 
 export default function App({ Component, pageProps }) {
+   
    /*  const [isMounted, setisMounted] = useState(false)
     const darkMode = useDarkMode(true)
     const theme = darkMode.value ? darkTheme : lightTheme
@@ -21,5 +22,12 @@ export default function App({ Component, pageProps }) {
     ) */
 
 
-    return <Component {...pageProps} />
+    return (
+        <ThemeContextProvider>
+        <Layout /> 
+        <Component {...pageProps} />
+        </ThemeContextProvider>
+    )
+  
+  
 }

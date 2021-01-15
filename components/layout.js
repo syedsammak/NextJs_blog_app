@@ -4,30 +4,19 @@ import utilStyles from '../styles/utils.module.css' */
 import Link from 'next/link'
 import Image from 'next/image'
 const name = 'Sammak'
-import React , { useState, useEffect } from 'react'
-import useDarkMode from 'use-dark-mode'
+import React , { useState, useEffect ,useContext } from 'react'
+import { ThemeContext }  from "../context/themeContext"
+import useDarkMode from '../lib/darkModeTheme'
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout() {
-    const darkMode = useDarkMode(true)
+
+
+  const { mode } = useContext(ThemeContext);
 
 return (
-    <div>
-        <Head>
-            <link rel="icon" href="favicon.ico" />
-            <meta 
-            name="description"
-            content="Learn How to build using Next.js"
-            />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+    <div className={mode ? 'dark-mode' : 'light-mode'}>
+       
       <header >
       <nav className="navbar p-4" role="navigation" aria-label="main navigation" >
   <div className="navbar-brand">
@@ -87,8 +76,9 @@ return (
           <a className="button is-light">
             Log in
           </a>
-          <button className="button is-dark" onClick={darkMode.enable}>Dark</button>
-          <button className="button is-light" onClick={darkMode.disable}>Light</button>
+          <button className="button is-dark" onClick={() => window.localStorage.setItem("darkMode",true)} >Dark</button>
+          <button className="button is-light" onClick={() => window.localStorage.setItem("darkMode",false)}>Light</button>
+       
         </div> 
       </div>
       
