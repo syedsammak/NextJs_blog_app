@@ -1,11 +1,5 @@
-import Head from 'next/head'
-/* import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css' */
-import Link from 'next/link'
 import Image from 'next/image'
-import React , { useState, useEffect ,useContext } from 'react'
-import { useThemeContext }  from "../context/newthemeContext"
-import useDarkMode from '../lib/darkModeTheme'
+import { useThemeContext }  from "context/newthemeContext"
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout() {

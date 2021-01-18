@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "link-module-alias"
   },
+
+
   "dependencies": {
     "axios": "^0.21.1",
     "bulma-extensions": "^6.2.7",
@@ -28,7 +31,6 @@
   },
   "devDependencies": {
     "bulma": "^0.9.1",
-    "link-module-alias": "^1.2.0",
     "node-sass": "^5.0.0"
   }
 }

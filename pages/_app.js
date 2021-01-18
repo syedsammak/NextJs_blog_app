@@ -1,6 +1,6 @@
-import Layout from "../components/layout"
+import Layout from "components/layout"
 import "../scss/styles.scss"
-import ThemeContextProvider from "../context/newthemeContext"
+import ThemeContextProvider from "context/newthemeContext"
 
 export default function App({ Component, pageProps }) {
    

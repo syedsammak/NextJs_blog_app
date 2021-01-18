@@ -58,3 +58,30 @@ export default ThemeContextProvider
 
 
 
+useState =>
+
+useState is the first react hook which is used to update the state of a react component 
+it returns a stateful value and returns a  set function to update its value , the usestate is intitalized by
+an intital state which is defined to the state by default value.
+
+useEffect => 
+
+useEffect hook is useful prior to client side Rendering methods , the functions passed to it
+run after the render is completed on the client side by default , an array is passed as an second argument which checks for 
+that particular value update is changed if its changed the useffect runs and impacts an effect assigned to it ,
+a cleanup is neccasry for every component removal to avoid any memory leaks 
+
+useLayoutEffect =>
+
+it is an additional hook same as useEffect bu its difference is on when it is fired
+
+useContext
+
+Create Context object instantiates a new context object which will
+be used to read current context value form its closest matching provider, in order to avoid calling useContext in every component we instantiate it 
+in our context file , A provider function holds all the logical reactive state , 
+functions to manage operations handled by the context High order component
+
+
+
+

@@ -1,11 +1,6 @@
-import Layout from '../../../components/layout'
-import Head from 'next/head'
 import axios from 'axios'
 
-
 const API_Url = 'https://picsum.photos/v2/list'
-
-
 
 export async function getServerSideProps(){
     try
@@ -33,7 +28,6 @@ export async function getServerSideProps(){
 export default function gallery({ photos , loading }) {
     return(
             <>
-             <Layout></Layout>
             {loading ?  (
                 <>
 

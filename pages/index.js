@@ -1,14 +1,10 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import Date from '../components/date'
+import { siteTitle } from 'components/layout'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Error from 'next/error'
-import ServerErrorPage from './error/404'
-import Image from 'next/image'
-import { useThemeContext } from "../context/newthemeContext"
+import ServerErrorPage from 'pages/error/404'
+import { useThemeContext } from "context/newthemeContext"
 const API_Url = 'https://jsonplaceholder.typicode.com'
 const BASE_URL = 'https://dummyapi.io/data/api'
 const APP_ID = '5ffda4f1fae51808b6926c05'
@@ -62,13 +58,13 @@ export default function Home() {
   .catch(err => {
     setError(true); 
     console.error(err)
-    if(axios.isCancel(err))
+   /*  if(axios.isCancel(err))
     {
 
     }
     else{
       throw err
-    }
+    } */
   })
   }, [])
 
@@ -114,9 +110,8 @@ export default function Home() {
     <>
      <Head>
         <title>{siteTitle}</title>
-      </Head>
+    </Head>
  
-
 {
 
 loading ? (
@@ -212,11 +207,6 @@ error ? (
     </ul>
   </section>
 </>
-
-
-  ) 
-)
-}
-
+))}
 </>
 )}

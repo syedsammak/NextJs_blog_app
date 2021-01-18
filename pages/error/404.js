@@ -1,5 +1,5 @@
 
-export default function errorPage() {
+export  function errorPage() {
 
     return(
         <>
@@ -18,3 +18,6 @@ export default function errorPage() {
 </>
     )
 }
+
+
+export default errorPage
