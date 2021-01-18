@@ -82,6 +82,9 @@ be used to read current context value form its closest matching provider, in ord
 in our context file , A provider function holds all the logical reactive state , 
 functions to manage operations handled by the context High order component
 
-
-
-
+useReducer =>
+an alternative to useState to impliment complex state logics or if the state is 
+dependant over the previous one , useReducer to implment nested components in component,
+useReducer actually takes an action and the reducer function holds a collection of 
+predefined set of actions which are to be used to update the state
+j
