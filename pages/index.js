@@ -167,7 +167,7 @@ error ? (
         <p class="subtitle is-1 p-5 ">Fuel your imagination</p>
      </div>
   </div>
-  <div className="tile is-4 is-vertical is-parent pr-6">
+  <div className="tile is-6 is-vertical is-parent pr-6">
     <div className="tile is-child box-two">
         <p class="subtitle is-3 p-5">Fuel your imagination</p>
     </div>
