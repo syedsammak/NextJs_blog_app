@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { useThemeContext }  from "context/newthemeContext"
+
+
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout() {
