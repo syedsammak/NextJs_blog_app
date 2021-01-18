@@ -1,8 +1,4 @@
-import Layout from '../../../components/layout'
-//import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
-//import Date from '../../components/date'
-import utilStyles from '../../../styles/utils.module.css'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -57,11 +53,9 @@ export default function Post(props) {
 
     return (
         <>
-    <Layout>
         <Head>
         {postData.title}
         </Head>
-    </Layout>
     <section className="hero is-fullheight is-primary is-bold">
         <div className="hero-body">
             <div className="container">
