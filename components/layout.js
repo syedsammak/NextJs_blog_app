@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import { useThemeContext }  from "context/newthemeContext"
-
+import { useState } from 'react';
 
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout() {
+
+  const [isActive, setisActive] = useState(false);
 
   const { theme , toggleTheme } = useThemeContext();
 
@@ -12,7 +14,6 @@ export default function Layout() {
 
 return (
     <div className={theme.dark_mode ? 'dark-mode' : 'light-mode'}>
-       
       <header >
       <nav className="navbar p-4" role="navigation" aria-label="main navigation" >
   <div className="navbar-brand">
@@ -24,43 +25,23 @@ return (
     width={50}
     height={10}
     />
-    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a 
+      onClick={() => { setisActive(!isActive); }} 
+      role="button" className={`navbar-burger burger ${isActive ? "is-active" : ""}`}  aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" className="navbar-menu">
+  <div id="navbarBasicExample" className={`navbar-menu ${isActive ? "is-active" : ""}`}>
     <div className="navbar-start px-5">
       <a href={"/"} className="navbar-item">
-               Home
+      Home
       </a>
       <a href={`/gallery/SSR/postImages`} className="navbar-item">
-               Gallery
+      Gallery
       </a>
-
-      <div className="navbar-item has-dropdown is-hoverable">
-        <a className="navbar-link">
-          More
-        </a>
-
-        <div className="navbar-dropdown">
-          <a className="navbar-item">
-            About
-          </a>
-          <a className="navbar-item">
-            Jobs
-          </a>
-          <a className="navbar-item">
-            Contact
-          </a>
-          <hr className="navbar-divider" />
-          <a className="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
     <div className="navbar-end">
@@ -78,6 +59,7 @@ return (
     </div>
   </div>
 </nav>
+
           
       </header>
         

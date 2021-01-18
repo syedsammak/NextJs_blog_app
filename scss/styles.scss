@@ -12,6 +12,13 @@ body {
       background-color: #F4F4F4;
     }
     z-index: 0;
+    a,h2,p {
+      width: 100;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
 }
 
 .light-mode {

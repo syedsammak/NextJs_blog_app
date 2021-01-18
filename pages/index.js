@@ -98,11 +98,15 @@ export default function Home() {
 
   const getUserImg = (id ,userImage) => {
 
-    return userImage[id % 10].download_url
+    return userImage[id % 10].download_url 
 
-   //   return userImage[id % 10].picture
-    
+    //return userImage[id % 10].picture
     //return console.log(userImage.filter(img => img.id.charAt(0) == id))
+  }
+
+  const getUserCatchPhrase = (id , userData) => 
+  {
+    return userData[id % 10].company.catchPhrase
   }
 
   return (
@@ -111,15 +115,12 @@ export default function Home() {
      <Head>
         <title>{siteTitle}</title>
     </Head>
- 
 {
 
 loading ? (
   <>
-
   <div className="section">
     <div className="container">
-      
             <div className="loader-wrapper is-offset-5">
             <div className="columns">
         <div className="column is-8 is-offset-1">
@@ -132,8 +133,6 @@ loading ? (
             </div>
       </div>
     </div>
-
-
   </>
 
 ) : (
@@ -143,13 +142,13 @@ error ? (
 <ServerErrorPage />
 
 /* <>
-<section class="hero is-danger">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
+<section className="hero is-danger">
+  <div className="hero-body">
+    <div className="container">
+      <h1 className="title">
         404 Not found
       </h1>
-      <h2 class="subtitle">
+      <h2 className="subtitle">
         No Data !
       </h2>
     </div>
@@ -161,11 +160,35 @@ error ? (
 <>
   <section className={theme.dark_mode
      ? "dark-mode" : "light-mode"}>
+     <div className="tile is-ancestor px-6">
+     <div className="tile is-parent pl-6 pr-0">
+    <div className="tile is-child box-one">
+    <h1 class="title p-5">Trees</h1>
+        <p class="subtitle is-1 p-5 ">Fuel your imagination</p>
+     </div>
+  </div>
+  <div className="tile is-4 is-vertical is-parent pr-6">
+    <div className="tile is-child box-two">
+        <p class="subtitle is-3 p-5">Fuel your imagination</p>
+    </div>
+    <div className="tile is-child box-three">
+        <p class="subtitle is-3 p-5">Bridge Lighting</p>
+     </div>
+    <div className="tile is-child box-four">
+        <p class="subtitle is-3 p-5">City Sounds</p>
+      </div>
+  </div>
+ 
+</div>
+
     <ul>
-      {post.map(({ id, userId, title }) => (
+      {post.map(({ id, userId }) => (
     <div className="container is-widescreen" key={id}>
-    <div className="column is-mobile is-hovered" key={id}>
-    <article className="tile notification" key={id}>
+    <div className="column is-hovered" key={id}>
+    <article onClick={() => router.push({
+              pathname: `/posts/CSR/${id}`,
+              query: { pid: id },
+            })} className="tile notification" key={id}>
       <div className="media">
         <figure className="media-left">
         <p className="image is-94x94">
@@ -175,35 +198,40 @@ error ? (
       />
     </p>
         </figure>
-        <div className="media-content">
-          <div className="content p-5 ">
-          <h2 className="is-family-sans-serif">{getUser(userId , user)}</h2>
+        <div className="media-content px-3 ">
+          <div className="content p-1">
+          <h2 className="is-family-sans-serif  ">{getUserCatchPhrase(id,user)}</h2>
           {console.log(getUserImg(id ,userImg))}
-          <li  key={id}>
+         {/*  <li key={id}>
             <span onClick={() => router.push({
               pathname: `/posts/CSR/${id}`,
               query: { pid: id },
-            })}><a className="subtitle is-5">{title}</a>
+            })}>
+              <a className="subtitle is-5 is-mobile ">{title}</a>
             </span>
-            {/* <Link href={`/posts/${id}`}></Link> */}
+          <Link href={`/posts/${id}`}></Link>
            
-           {/* <small className={utilStyles.lightText}>
+           <small className={utilStyles.lightText}>
              <Date dateString={date} />
-           </small> */}
-          </li>
+           </small> 
+          </li> */}
+          </div>
+          <div className="content p-1">
+          <div className="columns ">
+            <div className="column">
+            <p className="subtitle is-5 is-mobile">{getUser(userId , user)}</p>
+            </div>
+            <div className="column">
+            <span className="tag is-danger is-large">World</span>
+            </div>
+          </div>
           </div>
         </div>
       </div>
-    
-            
     </article>
     </div>
- 
-        
-       
-        </div>
-        )
-      )}
+    </div>
+))}
     </ul>
   </section>
 </>
